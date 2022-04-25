@@ -7,14 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maltest.randomjson.model.Post
-import com.maltest.randomjson.network.RetrofitHttp
-import com.maltest.randomjson.utils.Utils
 import com.maltest.randomjson.R
 import com.maltest.randomjson.adapter.PostAdapter
 import com.maltest.randomjson.viewModel.MainViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView

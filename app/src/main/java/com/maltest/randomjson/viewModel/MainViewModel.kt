@@ -4,17 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.maltest.randomjson.model.Post
-import com.maltest.randomjson.network.RetrofitHttp
+import com.maltest.randomjson.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainViewModel: ViewModel() {
     val allPost = MutableLiveData<ArrayList<Post>>()
-    val deletePost = MutableLiveData<Post>()
+    val delete = MutableLiveData<Post>()
 
      fun apiPostList(): LiveData<ArrayList<Post>> {
-        RetrofitHttp.postService.listPost().enqueue(object : Callback<ArrayList<Post>> {
+        RetrofitClient.service.list().enqueue(object : Callback<ArrayList<Post>> {
             override fun onResponse(
                 call: Call<ArrayList<Post>>,
                 response: Response<ArrayList<Post>>
@@ -30,14 +30,14 @@ class MainViewModel: ViewModel() {
     }
 
      fun apiPostDelete(post: Post): LiveData<Post> {
-        RetrofitHttp.postService.deletePost(post.id).enqueue(object : Callback<Post> {
+        RetrofitClient.service.delete(post.id).enqueue(object : Callback<Post> {
             override fun onResponse(call: Call<Post>, response: Response<Post>) {
-                deletePost.value = response.body()
+                delete.value = response.body()
             }
             override fun onFailure(call: Call<Post>, t: Throwable) {
-                deletePost.value = null
+                delete.value = null
             }
         })
-        return deletePost
+        return delete
     }
 }

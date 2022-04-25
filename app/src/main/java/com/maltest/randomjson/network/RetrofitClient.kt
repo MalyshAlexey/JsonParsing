@@ -3,7 +3,7 @@ package com.maltest.randomjson.network
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitHttp {
+object RetrofitClient {
 
     private val url = "https://jsonplaceholder.typicode.com/"
 
@@ -14,5 +14,5 @@ object RetrofitHttp {
 
 
 
-    val postService: PostService = retrofit.create(PostService::class.java)
+    val service: RetrofitClientInterface = retrofit.create(RetrofitClientInterface::class.java)
 }

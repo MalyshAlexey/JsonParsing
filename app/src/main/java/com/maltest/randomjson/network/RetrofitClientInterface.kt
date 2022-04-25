@@ -7,16 +7,16 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
 
-interface PostService {
+interface RetrofitClientInterface {
 
     @Headers(
         "Content-type:application/json"
     )
 
     @GET("posts")
-    fun listPost(): Call<ArrayList<Post>>
+    fun list(): Call<ArrayList<Post>>
 
     @DELETE("posts/{id}")
-    fun deletePost(@Path("id") id: Int): Call<Post>
+    fun delete(@Path("id") id: Int): Call<Post>
 
 }
